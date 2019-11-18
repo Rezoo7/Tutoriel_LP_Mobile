@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="736dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_original"
+            android:layout_width="391dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Texte Original" />
+
+        <EditText
+            android:id="@+id/original"
+            android:layout_width="400dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/text_chiffre"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Texte Chiffré" />
+
+        <EditText
+            android:id="@+id/chiffre"
+            android:layout_width="400dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="111dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <SeekBar
+            android:id="@+id/decalage"
+            android:layout_width="307dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/nombre_decal"
+            android:layout_width="51dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="320dp"
+            android:layout_marginTop="-50dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btn_chiffre"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:text="Chiffrement" />
+
+        <Button
+            android:id="@+id/btn_effacer"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:text="Effacer" />
+
+        <Button
+            android:id="@+id/tuto2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="tuto2" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

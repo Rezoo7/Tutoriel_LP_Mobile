@@ -29,10 +29,15 @@ public class Tuto2Activity extends AppCompatActivity {
         Button sendList = (Button) findViewById(R.id.sendList);
         ListView list = (ListView) findViewById(R.id.list);
 
-        for (int i = 0; i <= 10; i++) {
-            Invitation invit = new Invitation("nom " + i, "prenom " + i);
-            this.listItems.add(invit.toString());
-        }
+        Invitation inv1 = new Invitation("Guigourez","Maxime");
+        Invitation inv2 = new Invitation("Guillot","Lucas");
+        Invitation inv3 = new Invitation("Thomas","Remi");
+        Invitation inv4 = new Invitation("Duchesne","Quentin");
+
+        this.listItems.add(inv1.toString());
+        this.listItems.add(inv2.toString());
+        this.listItems.add(inv3.toString());
+        this.listItems.add(inv4.toString());
 
         this.adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
         list.setAdapter(adapter);

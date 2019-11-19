@@ -34,7 +34,7 @@ public class AddInvit extends AppCompatActivity {
                 intent.putExtra("invit_string",invit.toString());
                 intent.putExtra("invite_add",invit);
 
-                setResult(Activity.RESULT_OK,intent);
+                setResult(1,intent);
                 finish();
             }
         });

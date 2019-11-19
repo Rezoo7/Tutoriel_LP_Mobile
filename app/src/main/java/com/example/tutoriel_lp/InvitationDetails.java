@@ -41,6 +41,7 @@ public class InvitationDetails extends AppCompatActivity {
                 intent.putExtra("invite_details",inv);
                 intent.putExtra("index",index);
 
+                setResult(2,intent);
                 finish();
             }
         });

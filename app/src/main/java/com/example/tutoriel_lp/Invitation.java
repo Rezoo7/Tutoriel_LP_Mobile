@@ -39,7 +39,10 @@ public class Invitation implements Serializable {
                 + " "+ prénom.substring(0,1).toUpperCase()
                 + prénom.substring(1).toLowerCase();
         if (venue_confirmée) {
-            str += "  <OK>";
+            str += "  <Confirmée>";
+        }
+        else{
+            str += "  <Non Confirmée>";
         }
         return str;
     }

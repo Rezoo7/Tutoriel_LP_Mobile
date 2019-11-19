@@ -51,12 +51,7 @@ public class Tuto2Activity extends AppCompatActivity {
                 inv = new Invitation("Duchesne","Quentin");
                 this.listInvit.add(inv);
             }
-
-            if(inv.estConfirmee()){
-                this.listItems.add(inv.toString() + "  Confirmee");
-            }else{
-                this.listItems.add(inv.toString() + "  Non Confirmee");
-            }
+            this.listItems.add(inv.toString());
         }
 
         this.adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listItems);
@@ -66,7 +61,7 @@ public class Tuto2Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent add = new Intent(Tuto2Activity.this, AddInvit.class);
-                startActivityForResult(add, FLAG_ACTIVITY);
+                startActivityForResult(add, 1);
             }
         });
 
@@ -80,7 +75,7 @@ public class Tuto2Activity extends AppCompatActivity {
                 intent.putExtra("invite",invite);
                 intent.putExtra("index",position);
 
-                startActivityForResult(intent, FLAG_ACTIVITY);
+                startActivityForResult(intent, 2);
             }
         });
     }
@@ -88,31 +83,67 @@ public class Tuto2Activity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(resultCode);
 
-        if ((resultCode == RESULT_OK) && (requestCode == FLAG_ACTIVITY)) {
+        switch (resultCode){
+            case 1:
+                if(!data.hasExtra("invite_add")){
+                    Log.i("msg", "pas d'extras");
+                }
+                else{
+                    String inv_title = data.getStringExtra("invit_string");
+                    Invitation invit = (Invitation) data.getSerializableExtra("invite_add");
 
-            if(!data.hasExtra("invite_add")){
-                Log.i("msg", "pas d'extras add ");
-            }
-            else{
-                String inv_title = data.getStringExtra("invit_string");
-                Invitation invit = (Invitation) data.getSerializableExtra("invite_add");
+                    this.adapter.add(inv_title);
+                    this.listInvit.add(invit);
 
-                this.adapter.add(inv_title);
-                this.listInvit.add(invit);
-            }
+                    this.sortInvitations();
+                    this.adapter.notifyDataSetChanged();
+                }
 
-            if(!data.hasExtra("invite_details")){
-                Log.i("msg", "pas d'extras details ");
-            }
-            else{
-                System.out.println("oui oui oui ");
-                Invitation invit = (Invitation) data.getSerializableExtra("invite_details");
-                int index = data.getIntExtra("index",1000);
+            case 2:
+                if(!data.hasExtra("invite_details")){
+                    Log.i("LOL","details fail");
+                }
+                else{
+                    Invitation invit = (Invitation) data.getSerializableExtra("invite_details");
+                    int index = data.getIntExtra("index",1000);
 
-                System.out.println(invit.toString());
-            }
+                    this.listItems.set(index,invit.toString());
+                    this.listInvit.set(index,invit);
+                    this.adapter.notifyDataSetChanged();
+
+                    this.sortInvitations();
+                }
         }
+
     }
 
+
+    public void sortInvitations(){
+        int size_list = this.listItems.size();
+
+        for (int i=0;i<=size_list-2;i++){
+            System.out.println(size_list);
+            boolean b_invit1 = this.listInvit.get(i).estConfirmee();
+            boolean b_invit2 = this.listInvit.get(i+1).estConfirmee();
+
+            Invitation invit1 = this.listInvit.get(i);
+            Invitation invit2 = this.listInvit.get(i+1);
+
+            System.out.println(b_invit1 + "  " + b_invit2);
+
+            if((b_invit1 && !b_invit2) || (!b_invit1 && b_invit2))
+                if(b_invit2){
+                    System.out.println(this.listInvit.get(i).toString());
+
+                    this.listInvit.set(i,invit2);
+                    this.listInvit.set(i+1,invit1);
+
+                    this.listItems.set(i,invit2.toString());
+                    this.listItems.set(i+1,invit1.toString());
+                }
+        }
+        this.adapter.notifyDataSetChanged();
+    }
 }

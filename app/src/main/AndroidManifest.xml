@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModifyInvit"></activity>
+        <activity android:name=".InvitationDetails"></activity>
         <activity android:name=".AddInvit" />
         <activity android:name=".Tuto2Activity" />
         <activity android:name=".MainActivity">

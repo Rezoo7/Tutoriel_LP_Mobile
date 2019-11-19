@@ -31,7 +31,8 @@ public class AddInvit extends AppCompatActivity {
                 Invitation invit = new Invitation(name,pre);
 
                 Intent intent = new Intent();
-                intent.putExtra("invit",invit.toString());
+                intent.putExtra("invit_string",invit.toString());
+                intent.putExtra("invite_add",invit);
 
                 setResult(Activity.RESULT_OK,intent);
                 finish();

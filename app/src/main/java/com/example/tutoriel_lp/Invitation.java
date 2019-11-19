@@ -1,5 +1,6 @@
 package com.example.tutoriel_lp;
 
+import java.io.Serializable;
 import java.security.Timestamp;
 import java.util.Comparator;
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.Date;
  * Created by lanoix-a on 07/03/2018.
  */
 
-public class Invitation {
+public class Invitation implements Serializable {
 
 
     private String nom;
@@ -41,6 +42,14 @@ public class Invitation {
             str += "  <OK>";
         }
         return str;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrénom(String prénom) {
+        this.prénom = prénom;
     }
 
     /**
